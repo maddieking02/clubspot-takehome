@@ -18,3 +18,49 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
+/* --all */
+html,
+body {
+	height: 100%;
+  margin: 0;
+}
+
+.app-contain {
+	height: 100vh;
+}
+
+.flex-align-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* --image */
+#img {
+	height: 700px;
+	width: 300px;
+	object-fit: cover;
+}
+
+/* --calendar */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  border: 3px dashed blue;
+}
+
+.grid > div {
+  border: 1px solid black;
+}
+
+.grid-row {
+  display: contents;
+}
+
+.col-3 {
+  grid-column: span 3;
+}

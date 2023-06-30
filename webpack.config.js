@@ -22,6 +22,10 @@ module.exports = {
             plugins: ['@babel/plugin-proposal-class-properties']
           }
         }
+      },
+      {
+        test: /\.(jpeg|jpg)$/i,
+        type: 'asset/resource',
       }
     ]
   },
