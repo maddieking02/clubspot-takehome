@@ -1,0 +1,1 @@
+# clubspot-takehome
