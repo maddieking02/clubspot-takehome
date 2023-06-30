@@ -5,6 +5,7 @@ const initialState = {
   todaysDate: new Date(),
   currentImage: "",
   modalDisplay: false,
+  isSelected: false,
 };
 
 const calendarSlice = createSlice({
@@ -22,10 +23,13 @@ const calendarSlice = createSlice({
     },
     updateModalDisplay: (state, action) => {
       state.modalDisplay = action.payload;
+    },
+    updateIsSelected: (state, action) => {
+      state.isSelected = action.payload;
     }
   },
 });
 
-export const { updateCurrentDate, updateTodaysDate, updateCurrentImage, updateModalDisplay } = calendarSlice.actions;
+export const { updateCurrentDate, updateTodaysDate, updateCurrentImage, updateModalDisplay, updateIsSelected } = calendarSlice.actions;
 
 export default calendarSlice.reducer;

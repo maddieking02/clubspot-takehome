@@ -75,16 +75,14 @@ const Calendar = () => {
 
       {[...Array(totalDays).keys()].map((_, idx) => {
         const isToday = getDate(todaysDate) === idx + 1;
-        // console.log('todaysDate', todaysDate, 'currentDate', currentDate);
+        const checkMonthYear = format(todaysDate, "MMMM yyyy") === format(currentDate, "MMMM yyyy");
 
-        return isToday ? (
+        return isToday & checkMonthYear ? (
           <Cell key={idx} isToday>{idx + 1}</Cell>
         ) : (
           <Cell key={idx}>{idx + 1}</Cell>
         );
       })}
-
-      {console.log('TEST', todaysDate)}
 
       {[...Array(spaceAfter).keys()].map((_, idx) => (
         <Cell key={idx} hidden>{""}</Cell>

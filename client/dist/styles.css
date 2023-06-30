@@ -182,3 +182,7 @@ body {
 	color: #B8B8B8;
 	cursor: pointer;
 }
+
+.isSelected {
+	border: 5px solid pink
+}
