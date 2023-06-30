@@ -4,8 +4,8 @@ import Image from "./Image";
 
 const App = () => {
   return (
-    <div className="app-contain flex-align-content" /* style={{ border: "2px solid black" }} */>
-      <div className="component-contain" /* style={{ border: "2px solid pink" }} */>
+    <div className="app-contain flex-align-content">
+      <div className="component-contain">
         <Image />
         <Calendar />
       </div>

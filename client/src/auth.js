@@ -22,7 +22,7 @@ const calendarSlice = createSlice({
     },
     updateModalDisplay: (state, action) => {
       state.modalDisplay = action.payload;
-    }
+    },
   },
 });
 

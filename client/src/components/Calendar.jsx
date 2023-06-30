@@ -30,7 +30,6 @@ const Calendar = () => {
   const start = startOfMonth(currentDate);
   const end = endOfMonth(currentDate);
   const totalDays = differenceInDays(end, start) + 1;
-  console.log('start', start, 'end', end, 'totalDays', totalDays)
 
   /* number of blank spaces to add before and after so day '1' starts on the correct day of the week */
   const spaceBefore = start.getDay();
@@ -39,12 +38,10 @@ const Calendar = () => {
   /* first date of prev and next month */
   const prevMonth = startOfMonth(subMonths(currentDate, 1));
   const nextMonth = endOfMonth(addMonths(currentDate, 1));
-  // console.log('prevMonth', prevMonth, 'nextMonth', nextMonth)
 
   /* current date of prev and next year */
   const prevYear = subYears(currentDate, 1);
   const nextYear = addYears(currentDate, 1);
-  // console.log('prevYear', prevYear, 'nextYear', nextYear)
 
   const handleLeftClick = (value) => {
     value === "prevYear" ? dispatch(updateCurrentDate(prevYear)) : dispatch(updateCurrentDate(prevMonth));
@@ -75,16 +72,14 @@ const Calendar = () => {
 
       {[...Array(totalDays).keys()].map((_, idx) => {
         const isToday = getDate(todaysDate) === idx + 1;
-        // console.log('todaysDate', todaysDate, 'currentDate', currentDate);
+        const checkMonthYear = format(todaysDate, "MMMM yyyy") === format(currentDate, "MMMM yyyy");
 
-        return isToday ? (
+        return isToday & checkMonthYear ? (
           <Cell key={idx} isToday>{idx + 1}</Cell>
         ) : (
           <Cell key={idx}>{idx + 1}</Cell>
         );
       })}
-
-      {console.log('TEST', todaysDate)}
 
       {[...Array(spaceAfter).keys()].map((_, idx) => (
         <Cell key={idx} hidden>{""}</Cell>
