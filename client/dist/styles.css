@@ -30,17 +30,16 @@ body {
 
 .app-contain {
 	height: 100vh;
-	overflow: hidden;
 }
 
 .component-contain {
 	display: flex;
 	height: fit-content;
-	max-width: 75%;
+	width: 75%;
 	align-items: center;
 	justify-content: space-evenly;
-	padding: 2em;
-	overflow: auto;
+	padding: 1em;
+	/* border: 2px solid red; */
 }
 
 .flex-align-content {
@@ -117,7 +116,9 @@ body {
 	height: 200px;
 	width: 200px;
 	object-fit: cover;
+	cursor: pointer;
 	border: 1px solid black;
+	border-radius: 8px;
 }
 
 .closeBtn {
@@ -127,6 +128,7 @@ body {
   justify-self: flex-start;
   margin-top: 10px;
   margin-left: 10px;
+	cursor: pointer;
 }
 
 /* --calendar */
@@ -138,9 +140,11 @@ body {
   text-align: center;
 	grid-gap: 3px;
   width: 700px;
-  height: 595px;
+  height: 592.5px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-	padding-bottom: 0.175em;
+	padding: 0.175em 0 0.175em 0;
+  overflow: auto;
+  grid-auto-rows: 70px;
 }
 
 .grid-row {
@@ -163,9 +167,9 @@ body {
 .grid-cell {
  	position: relative;
 	white-space: nowrap;
-	min-width: 80px;
-	max-width: 80px;
-	height: 80px;
+	min-width: 70px;
+	max-width: 70px;
+	height: 70px;
 	border-radius: 50%;
 }
 
