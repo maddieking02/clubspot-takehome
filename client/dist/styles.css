@@ -30,14 +30,17 @@ body {
 
 .app-contain {
 	height: 100vh;
+	overflow: hidden;
 }
 
 .component-contain {
 	display: flex;
 	height: fit-content;
-	width: 75%;
+	max-width: 75%;
 	align-items: center;
 	justify-content: space-evenly;
+	padding: 2em;
+	overflow: auto;
 }
 
 .flex-align-content {
@@ -135,9 +138,9 @@ body {
   text-align: center;
 	grid-gap: 3px;
   width: 700px;
-  height: 600px;
-  /* border: 3px dashed blue; */
+  height: 595px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	padding-bottom: 0.175em;
 }
 
 .grid-row {
@@ -149,7 +152,7 @@ body {
 }
 
 .grid-cell.today {
-	background-color: #bbc6ec;
+	background-color: #abbaee;
 }
 
 .grid .grid-cell:hover:not(.disableHover),
@@ -157,20 +160,13 @@ body {
   background-color: rgba(134, 171, 255, 0.3);
 }
 
-/* .grid-cell.icon-cell .icon-cell:hover {
-	background-color: none;
-} */
-
 .grid-cell {
  	position: relative;
-	/* overflow: hidden; */
-	/* border: 1px solid black; */
 	white-space: nowrap;
-	/* width: 80px;
-  height: 80px; */
-	width: 100%;
-	height: 100%;
-	/* border-radius: 50%; */
+	min-width: 80px;
+	max-width: 80px;
+	height: 80px;
+	border-radius: 50%;
 }
 
 .grid-cell.hidden {
@@ -184,5 +180,6 @@ body {
 }
 
 .isSelected {
-	border: 5px solid pink
+  background-color: #c6bbec;
+  transition: background-color 0.2s ease;
 }

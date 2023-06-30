@@ -1,22 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { updateIsSelected } from "../auth";
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 
 const Cell = ({ children, disableHover, onClick, hidden, isToday }) => {
-  const [test, setTest] = useState(false);
-
-
-  const { isSelected } = useSelector((state) => state.calendar);
-  const dispatch = useDispatch();
+  const [isSelected, setIsSelected] = useState(false);
 
   const handleSelection = () => {
-    // const dataValue = e.currentTarget.getAttribute('data-value');
-    // console.log(dataValue);
-
-
-    // dispatch(updateIsSelected(!isSelected))
-    // console.log('state of isSelected', isSelected)
-    setTest(!test);
+    setIsSelected(!isSelected);
   }
 
   return (
@@ -28,10 +17,9 @@ const Cell = ({ children, disableHover, onClick, hidden, isToday }) => {
         ${hidden ? "hidden" : ""}
         ${isToday ? "today" : ""}
         ${disableHover ? "disableHover" : ""}
-        ${test ? "isSelected" : ""}
+        ${isSelected ? "isSelected" : ""}
       `}
       onClick={onClick ? onClick : handleSelection}
-      data-value={children}
     >
       {children}
     </div>
