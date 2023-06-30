@@ -24,10 +24,21 @@ html,
 body {
 	height: 100%;
   margin: 0;
+	/* font-family: 'Lato', sans-serif; */
+	font-family: 'Poppins', sans-serif;
+	font-size: 20px;
 }
 
 .app-contain {
 	height: 100vh;
+}
+
+.component-contain {
+	display: flex;
+	height: fit-content;
+	width: 75%;
+	align-items: center;
+	justify-content: space-evenly;
 }
 
 .flex-align-content {
@@ -38,8 +49,8 @@ body {
 
 /* --image */
 #img {
-	height: 700px;
-	width: 300px;
+	height: 600px;
+	width: 250px;
 	object-fit: cover;
 }
 
@@ -50,6 +61,9 @@ body {
   align-items: center;
   justify-items: center;
   text-align: center;
+	grid-gap: 5px;
+  width: 700px;
+  height: 600px;
   border: 3px dashed blue;
 }
 
@@ -63,4 +77,13 @@ body {
 
 .col-3 {
   grid-column: span 3;
+}
+
+.cell {
+  overflow: hidden;
+}
+
+.icon {
+	font-size: 1.5em;
+	color: red
 }

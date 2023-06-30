@@ -5,7 +5,7 @@ import Image from "./Image";
 const App = () => {
   return (
     <div className="app-contain flex-align-content" style={{ border: "2px solid black" }}>
-      <div className="flex-align-content" style={{ border: "2px solid pink" }}>
+      <div className="component-contain" style={{ border: "2px solid pink" }}>
         <Image />
         <Calendar />
       </div>

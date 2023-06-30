@@ -56,13 +56,13 @@ const Calendar = () => {
   return (
     <div className="grid">
 
-      <Cell onClick={() => handleLeftClick("prevYear")}><RiArrowLeftDoubleFill/></Cell>
-      <Cell onClick={() => handleLeftClick("prevMonth")}><RiArrowLeftSLine/></Cell>
+      <Cell className="icon-cell" onClick={() => handleLeftClick("prevYear")}><RiArrowLeftDoubleFill className="icon"/></Cell>
+      <Cell className="icon-cell" onClick={() => handleLeftClick("prevMonth")}><RiArrowLeftSLine className="icon" /></Cell>
       <Cell className="grid-row" />
       <Cell className="col-3">{format(currentDate, 'MMMM yyyy')}</Cell>
       <Cell className="grid-row" />
-      <Cell onClick={() => handleRightClick("nextMonth")}><RiArrowRightSLine/></Cell>
-      <Cell onClick={() => handleRightClick("nextYear")}><RiArrowRightDoubleFill/></Cell>
+      <Cell className="icon-cell" onClick={() => handleRightClick("nextMonth")}><RiArrowRightSLine className="icon" /></Cell>
+      <Cell className="icon-cell" onClick={() => handleRightClick("nextYear")}><RiArrowRightDoubleFill className="icon" /></Cell>
 
       {days.map((day, idx) => (
         <Cell key={idx}>{day}</Cell>
