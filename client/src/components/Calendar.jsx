@@ -8,6 +8,7 @@ import {
   subMonths,
   addYears,
   subYears,
+  format,
 } from "date-fns";
 import { updateCurrentDate } from "../auth";
 import { useSelector, useDispatch } from "react-redux";
@@ -22,6 +23,7 @@ const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const Calendar = () => {
   const { currentDate } = useSelector((state) => state.calendar);
+  const dispatch = useDispatch();
 
   /* current month start date, end date, total days calculation */
   const start = startOfMonth(currentDate);
@@ -36,23 +38,31 @@ const Calendar = () => {
   /* first date of prev and next month */
   const prevMonth = startOfMonth(subMonths(currentDate, 1));
   const nextMonth = endOfMonth(addMonths(currentDate, 1));
-  console.log('prevMonth', prevMonth, 'nextMonth', nextMonth)
+  // console.log('prevMonth', prevMonth, 'nextMonth', nextMonth)
 
   /* current date of prev and next year */
   const prevYear = subYears(currentDate, 1);
   const nextYear = addYears(currentDate, 1);
-  console.log('prevYear', prevYear, 'nextYear', nextYear)
+  // console.log('prevYear', prevYear, 'nextYear', nextYear)
+
+  const handleLeftClick = (value) => {
+    value === "prevYear" ? dispatch(updateCurrentDate(prevYear)) : dispatch(updateCurrentDate(prevMonth));
+  }
+
+  const handleRightClick = (value) =>  {
+    value === "nextYear" ? dispatch(updateCurrentDate(nextYear)) : dispatch(updateCurrentDate(nextMonth));
+  }
 
   return (
     <div className="grid">
 
-      <Cell onClick={prevYear}><RiArrowLeftDoubleFill/></Cell>
-      <Cell onClick={prevMonth}><RiArrowLeftSLine/></Cell>
+      <Cell onClick={() => handleLeftClick("prevYear")}><RiArrowLeftDoubleFill/></Cell>
+      <Cell onClick={() => handleLeftClick("prevMonth")}><RiArrowLeftSLine/></Cell>
       <Cell className="grid-row" />
-      <Cell className="col-3">June 2023</Cell>
+      <Cell className="col-3">{format(currentDate, 'MMMM yyyy')}</Cell>
       <Cell className="grid-row" />
-      <Cell onClick={prevMonth}><RiArrowRightSLine/></Cell>
-      <Cell onClick={prevYear}><RiArrowRightDoubleFill/></Cell>
+      <Cell onClick={() => handleRightClick("nextMonth")}><RiArrowRightSLine/></Cell>
+      <Cell onClick={() => handleRightClick("nextYear")}><RiArrowRightDoubleFill/></Cell>
 
       {days.map((day, idx) => (
         <Cell key={idx}>{day}</Cell>
