@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Cell = ({ children, onClick }) => {
+const Cell = ({ children, disableHover, onClick, hidden, isToday }) => {
   return (
-    <div className="cell flex-align-content" onClick={onClick}>
+    <div className={`grid-cell flex-align-content ${hidden ? "hidden" : ""} ${isToday ? "today" : ""} ${disableHover ? "disableHover" : ""}`} onClick={onClick}>
       {children}
     </div>
   )

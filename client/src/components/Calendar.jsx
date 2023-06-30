@@ -9,6 +9,7 @@ import {
   addYears,
   subYears,
   format,
+  getDate,
 } from "date-fns";
 import { updateCurrentDate } from "../auth";
 import { useSelector, useDispatch } from "react-redux";
@@ -22,7 +23,7 @@ import {
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const Calendar = () => {
-  const { currentDate } = useSelector((state) => state.calendar);
+  const { currentDate, todaysDate } = useSelector((state) => state.calendar);
   const dispatch = useDispatch();
 
   /* current month start date, end date, total days calculation */
@@ -56,28 +57,37 @@ const Calendar = () => {
   return (
     <div className="grid">
 
-      <Cell className="icon-cell" onClick={() => handleLeftClick("prevYear")}><RiArrowLeftDoubleFill className="icon"/></Cell>
-      <Cell className="icon-cell" onClick={() => handleLeftClick("prevMonth")}><RiArrowLeftSLine className="icon" /></Cell>
-      <Cell className="grid-row" />
-      <Cell className="col-3">{format(currentDate, 'MMMM yyyy')}</Cell>
-      <Cell className="grid-row" />
-      <Cell className="icon-cell" onClick={() => handleRightClick("nextMonth")}><RiArrowRightSLine className="icon" /></Cell>
-      <Cell className="icon-cell" onClick={() => handleRightClick("nextYear")}><RiArrowRightDoubleFill className="icon" /></Cell>
+      <Cell disableHover onClick={() => handleLeftClick("prevYear")}><RiArrowLeftDoubleFill className="icon"/></Cell>
+      <Cell disableHover onClick={() => handleLeftClick("prevMonth")}><RiArrowLeftSLine className="icon" /></Cell>
+      <Cell className="grid-row" hidden />
+      <Cell className="col-3" disableHover>{format(currentDate, 'MMM yyyy').toUpperCase()}</Cell>
+      <Cell className="grid-row" hidden />
+      <Cell disableHover onClick={() => handleRightClick("nextMonth")}><RiArrowRightSLine className="icon" /></Cell>
+      <Cell disableHover onClick={() => handleRightClick("nextYear")}><RiArrowRightDoubleFill className="icon" /></Cell>
 
       {days.map((day, idx) => (
-        <Cell key={idx}>{day}</Cell>
+        <Cell key={idx} disableHover>{day}</Cell>
       ))}
 
       {[...Array(spaceBefore).keys()].map((_, idx) => (
-        <Cell key={idx}>{""}</Cell>
+        <Cell key={idx} hidden>{""}</Cell>
       ))}
 
-      {[...Array(totalDays).keys()].map((_, idx) => (
-        <Cell key={idx}>{idx + 1}</Cell>
-      ))}
+      {[...Array(totalDays).keys()].map((_, idx) => {
+        const isToday = getDate(todaysDate) === idx + 1;
+        // console.log('todaysDate', todaysDate, 'currentDate', currentDate);
+
+        return isToday ? (
+          <Cell key={idx} isToday>{idx + 1}</Cell>
+        ) : (
+          <Cell key={idx}>{idx + 1}</Cell>
+        );
+      })}
+
+      {console.log('TEST', todaysDate)}
 
       {[...Array(spaceAfter).keys()].map((_, idx) => (
-        <Cell key={idx}>{""}</Cell>
+        <Cell key={idx} hidden>{""}</Cell>
       ))}
 
     </div>
