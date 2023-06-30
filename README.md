@@ -6,7 +6,10 @@ A modern and minimalist design of a calendar application that offers users simpl
 
 ## Features
 ## Interactive navigation for month-year, and selected calendar dates
+<img width="1407" alt="Screenshot 2023-06-30 at 11 58 46 AM" src="https://github.com/maddieking02/clubspot-takehome/assets/106297124/5b6d6505-b842-4715-b849-5e7e3d774147">
+
 ## Image Selection Options
+<img width="1410" alt="Screenshot 2023-06-30 at 11 58 57 AM" src="https://github.com/maddieking02/clubspot-takehome/assets/106297124/f04f8f5a-3e15-4d5c-80a0-8a1f016e5ba3">
 
 ## Getting Started
 
